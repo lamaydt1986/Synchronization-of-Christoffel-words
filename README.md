@@ -38,7 +38,7 @@ This file contains instructions on how to use the functions to synchronize Chris
 - D
 - gensReveillesLine
 
-## Details:
+## Function Descriptions
 
 - **orbitize**: Finds orbits of any generator.
   - Input: (generator, n = sum of the list of generators)
@@ -59,23 +59,23 @@ This file contains instructions on how to use the functions to synchronize Chris
 - **transpose**: Transposes a matrix (list of lists).
   - Input: A matrix (list of lists of equal lengths)
   - Output: A transposed matrix.
-    
-- **checkSynchro**: check synchronization function: Synchronized iff all sum of cols == 1.
-  - Input:  A Christoffel word matrix (list of Christoffel word lists)
-  - Output: True or False depending on whether that list is synchronized
+
+- **checkSynchro**: Check synchronization function: Synchronized iff all sum of cols == 1.
+  - Input: A Christoffel word matrix (list of Christoffel word lists)
+  - Output: True or False depending on whether that list is synchronized.
 
 - **shift**: Shifts a row by one index.
   - Input: Any list
   - Output: A right shift of the list by one index.
-  - Example: input([1,0,0,1,0,0,1]) ----> output([1,1,0,0,1,0,0])
+  - Example: input([1,0,0,1,0,0,1]) → output([1,1,0,0,1,0,0])
 
 - **shiftBy**: Shifts a list by n indices.
   - Input: Any list
   - Output: A right shift of the list by n indices.
 
-- **allShifts**: generates all possible shifts for a list
+- **allShifts**: Generates all possible shifts for a list.
   - Input: Any list
-  - Output: all possible shifts for that list.
+  - Output: All possible shifts for that list.
 
 - **shiftOb**: Shifts an orbit by n iterations.
   - Input: An orbit list
@@ -92,12 +92,12 @@ This file contains instructions on how to use the functions to synchronize Chris
 - **merger**: Merges two lists by summing columns.
   - Input: Two lists
   - Output: Lists merged together by summing columns.
-  - Example: input([[1,1,1],[0,1,2]]) ----> output([1,2,3])
+  - Example: input([[1,1,1],[0,1,2]]) → output([1,2,3])
 
 - **syncWord (Synchronized Word function)**: Finds the synchronized word of a synchronized matrix.
   - Input: Christoffel word matrix
   - Output: Synchronized word, Christoffel Conjugate Matrix.
-  - Example: input - [[1,0,0],[0,1,0],[0,0,1]] ----> output - [[[1,0,0],[0,2,0],[0,0,3]], [1,2,3]]
+  - Example: input - [[1,0,0],[0,1,0],[0,0,1]] → output - [[[1,0,0],[0,2,0],[0,0,3]], [1,2,3]]
 
 - **indexFinder**: Finds the index of a number in a list. Particularly useful for finding the index of a number in the orbit given the seed.
   - Input: An orbit, a number
@@ -106,15 +106,15 @@ This file contains instructions on how to use the functions to synchronize Chris
 - **synchronizedForm**: Transforms the orbits using the relative seed (circular permutation starting from a given position).
   - Input: An orbit, an index
   - Output: A shifted orbit such that there is a circular permutation starting from the specified position.
-  - Example: synchronizedForm([0,2,4,8,1,3,5,0],3) ---> [8, 1, 3, 5, 0, 2, 4, 8]
+  - Example: synchronizedForm([0,2,4,8,1,3,5,0],3) → [8, 1, 3, 5, 0, 2, 4, 8]
 
 - **seedFinder**: Generates a list of seeds.
-  - Input: list of generators.
-  - output: list of seeds.
+  - Input: List of generators.
+  - Output: List of seeds.
 
 - **cleanGens**: Modifies the list of generators (sorted and without zeros).
 
-- **Synchronize**: Uses the seeds to synchronize the Orbit Matrix and words.
+- **synchronize**: Uses the seeds to synchronize the Orbit Matrix and words.
   - Input: List of generators, list of seeds
   - Output: Synchronized orbit and Christoffel words matrix.
 
@@ -145,135 +145,86 @@ This file contains instructions on how to use the functions to synchronize Chris
     - Orbits: Synchronized orbits matrix.
     - Seeds: First column of the synchronized orbits matrix.
 
-### `plotCor`
+- **plotCor**: This function is used to plot a given word based on the starting coordinates.
+  - Input:
+    - `xcor`: Starting x-coordinates
+    - `ycor`: Starting y-coordinates
+    - `word`: Christoffel word
+    - `version`: Version for mapping the words
+    - `c`: Color of the plot
+  - Output: Plots the word based on the starting points.
 
-This function is used to plot a given word based on the starting coordinates.
+- **wordPlotter**: This function plots a given Christoffel word.
+  - Input:
+    - `word`: Christoffel word
+    - `c`: Color
+    - `shift`: A shift to apply to the word
+    - `version`: Version ('old' or 'new')
+  - Output: The plot for the word.
 
-**Input:**
-- `xcor`: Starting x-coordinates
-- `ycor`: Starting y-coordinates
-- `word`: Christoffel word
-- `version`: Version for mapping the words
-- `c`: Color of the plot
+- **InitializePlot2D**: This function initializes 2D plots with legends.
+  - Input:
+    - `gens`: List of generators
+    - `words`: Christoffel word matrix
+    - `orbits`: Orbital matrix
+    - `version`: Version ('n' or 'o')
+    - `c`: Colors used for each row of the Christoffel word matrix
+    - `shift`: Shift applied
+  - Output: Plots with legends.
 
-**Output:**
-- Plots the word based on the starting points.
+- **getPoints**: This function is used to get all points between the upper and lower bounds.
+  - Input:
+    - `a`, `b`: Slope coordinates
+    - `mu`: The seed being used
+  - Output: All the points laying between the bounds.
 
-### `wordPlotter`
+- **getWord**: This function generates a Christoffel word using the given points.
+  - Input:
+    - `points`: Points laying between bounds
+  - Output: Christoffel word generated using the points.
 
-This function plots a given Christoffel word.
+- **plotPoints**: This function plots points between bounds.
+  - Input:
+    - `points`: Points laying between bounds
+    - `a`, `b`: Intercepts of the slope
+    - `mu`: The seed being used
+  - Output: A 2D plot for the given points.
 
-**Input:**
-- `word`: Christoffel word
-- `c`: Color
-- `shift`: A shift to apply to the word
-- `version`: Version ('old' or 'new')
+- **gensPlot2D**: Function to plot synchronized words in 2D.
+  - Input:
+    - `gens`: List of generators
+    - `cond`:
+      - True: Plotting the synchronized matrix
+      - False: Plotting the original unsynchronized Christoffel words matrix
+    - `version`:
+      - Old: Plotting it with 0 meaning moving in the x direction and 1 meaning moving in the y direction
+      - New: Similar to old but when we have a 1, map it to 0,1 so we move once in X then once in Y
+  - Output: A single plot with all the words.
 
-**Output:**
-- The plot for the word.
+- **allShiftsGensPlot**: Function to plot synchronized words with all possible shifts in 2D.
+  - Input:
+    - `gens`: List of generators
+    - `cond`:
+      - True: Plotting the synchronized matrix
+      - False: Plotting the original unsynchronized Christoffel words matrix
+    - `version`:
+      - Old: Plotting it with 0 meaning moving in the x direction and 1 meaning moving in the y direction
+      - New: Similar to old but when we have a 1, map it to 0,1 so we move once in X then once in Y
+  - Output: n (n = sum of gens) plots with all the words with each plot having shifts applied to it (shifting each plot by i = {1,...,n}).
 
-### `InitializePlot2D`
+- **D**: Extracting a word from all the integer points that fall within 2 bounds that can be found using the slope.
+  - Input:
+    - `a`: x coefficient
+    - `b`: y coefficient
+    - `mu`: Seed
+    - `cond`: Whether you want a plot output or not
+  - Output: The word obtained, plot depending on the condition.
 
-This function initializes 2D plots with legends.
-
-**Input:**
-- `gens`: List of generators
-- `words`: Christoffel word matrix
-- `orbits`: Orbital matrix
-- `version`: Version ('n' or 'o')
-- `c`: Colors used for each row of the Christoffel word matrix
-- `shift`: Shift applied
-
-**Output:**
-- Plots with legends.
-
-### `getPoints`
-
-This function is used to get all points between the upper and lower bounds.
-
-**Input:**
-- `a`, `b`: Slope coordinates
-- `mu`: The seed being used
-
-**Output:**
-- All the points laying between the bounds.
-
-### `getWord`
-
-This function generates a Christoffel word using the given points.
-
-**Input:**
-- `points`: Points laying between bounds
-
-**Output:**
-- Christoffel word generated using the points.
-
-### `plotPoints`
-
-This function plots points between bounds.
-
-**Input:**
-- `points`: Points laying between bounds
-- `a`, `b`: Intercepts of the slope
-- `mu`: The seed being used
-
-**Output:**
-- A 2D plot for the given points.
-
-
-### gensPlot2D
-
-**Input:**
-- `gens`: List of generators
-- `cond`:
-  - True: Plotting the synchronized matrix
-  - False: Plotting the original unsynchronized Christoffel words matrix
-- `version`:
-  - Old: Plotting it with 0 meaning moving in the x direction and 1 meaning moving in the y direction
-  - New: Similar to old but when we have a 1, map it to 0,1 so we move once in X then once in Y
-
-**Output:**
-- A single plot with all the words
-
-### allShiftsGensPlot
-
-**Input:**
-- `gens`: List of generators
-- `cond`:
-  - True: Plotting the synchronized matrix
-  - False: Plotting the original unsynchronized Christoffel words matrix
-- `version`:
-  - Old: Plotting it with 0 meaning moving in the x direction and 1 meaning moving in the y direction
-  - New: Similar to old but when we have a 1, map it to 0,1 so we move once in X then once in Y
-
-**Output:**
-- n (n = sum of gens) plots with all the words with each plot having shifts applied to it (shifting each plot by i = {1,...,n})
-
-### D
-
-Extracting a word from all the integer points that fall within 2 bounds that can be found using the slope.
-
-**Input:**
-- `a`: x coefficient
-- `b`: y coefficient
-- `mu`: Seed
-- `cond`: Whether you want a plot output or not
-
-**Output:**
-- The word obtained, plot depending on the condition
-
-### gensReveillesLine
-
-**Input:**
-- `gens`: List of generators
-- `mu`: Seed applied on the function
-
-**Output:**
-- List of words for each generator
-- Plots for each word
-- Output obtained using the `D` function
-
-
+- **gensReveillesLine**: Function to extract words and plots for each generator.
+  - Input:
+    - `gens`: List of generators
+    - `mu`: Seed applied on the function
+  - Output: List of words for each generator, plots for each word, output obtained using the `D` function.
 
 ## Usage
 
