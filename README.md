@@ -145,10 +145,6 @@ This file contains instructions on how to use the functions to synchronize Chris
     - Orbits: Synchronized orbits matrix.
     - Seeds: First column of the synchronized orbits matrix.
 
-## Plotting Functions
-
-These functions are designed to visualize the data and results.
-
 ### `plotCor`
 
 This function is used to plot a given word based on the starting coordinates.
@@ -282,10 +278,5 @@ Extracting a word from all the integer points that fall within 2 bounds that can
 ## Usage
 
 You can use these functions to analyze and synchronize Christoffel words, explore fitness conditions, and visualize the results.
-
-## Acknowledgments
-
-These functions were developed to help with the analysis and synchronization of Christoffel words. If you find them useful, please consider citing this repository or acknowledging the contributors.
-
 [Ahmed Abderraouf Menaa]
 
