@@ -25,7 +25,7 @@ This file contains instructions on how to use the functions to synchronize Chris
 - findAllFits
 - fitnessSync
 
-## Plotting Functions
+### Plotting Functions
 
 - plotCor
 - wordPlotter
@@ -38,6 +38,7 @@ This file contains instructions on how to use the functions to synchronize Chris
 - D
 - gensReveillesLine
 
+## Details:
 
 - **orbitize**: Finds orbits of any generator.
   - Input: (generator, n = sum of the list of generators)
